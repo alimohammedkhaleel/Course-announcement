@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>إعلان كورس الويب المتكامل | HTML, CSS, JS, React</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: 'Segoe UI', 'Tahoma', 'Tajawal', system-ui, -apple-system, sans-serif;
+            padding: 30px 20px;
+            direction: rtl;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* بطاقة الإعلان الرئيسية - تنسيق صفحة واحدة */
+        .ad-card {
+            max-width: 1150px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 56px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), 0 5px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* الهيدر الجذاب */
+        .hero {
+            background: linear-gradient(135deg, #0a2e3f, #154e6e);
+            padding: 35px 35px 40px 35px;
+            text-align: center;
+            border-bottom: 5px solid #ffb347;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-stack {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin: 18px 0 10px;
+        }
+
+        .tech-badge {
+            background: rgba(255, 248, 225, 0.2);
+            backdrop-filter: blur(6px);
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff3df;
+            border: 1px solid #ffce8e;
+        }
+
+        .hero p {
+            color: #ffeaC4;
+            font-size: 1rem;
+            margin-top: 14px;
+        }
+
+        /* المحتوى الداخلي */
+        .content {
+            padding: 30px 35px 35px 35px;
+        }
+
+        /* ثلاثة كروت المستويات */
+        .levels-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .level-card {
+            flex: 1;
+            min-width: 240px;
+            background: #fefaf2;
+            border-radius: 32px;
+            padding: 0;
+            transition: all 0.25s ease;
+            box-shadow: 0 12px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ffe1b3;
+        }
+
+        .level-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .level-head {
+            background: #1f4e6e;
+            padding: 18px 16px;
+            border-radius: 32px 32px 30px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .level-head h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .level-head span {
+            background: #ffb347;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #2c2c2c;
+        }
+
+        .level-body {
+            padding: 18px 20px 22px;
+        }
+
+        .level-body ul {
+            padding-right: 20px;
+            margin: 12px 0;
+        }
+
+        .level-body li {
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .price-tag {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #c2571a;
+            margin: 12px 0 6px;
+            border-top: 2px dashed #ffd28f;
+            padding-top: 12px;
+        }
+
+        .req-light {
+            font-size: 0.75rem;
+            background: #f0ede3;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 40px;
+        }
+
+        /* ملخص سريع أنيق */
+        .outputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: #f2f6fc;
+            border-radius: 38px;
+            padding: 20px 24px;
+            margin: 25px 0;
+            justify-content: space-between;
+        }
+
+        .output-item {
+            flex: 1;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .output-item span {
+            font-size: 1.6rem;
+            display: block;
+        }
+
+        /* جدول بسيط وحديث */
+        .info-table {
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 1px solid #ffddb0;
+        }
+
+        .info-table table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        .info-table th {
+            background: #ffeed5;
+            color: #2c3e4e;
+            padding: 12px 12px;
+            font-weight: 800;
+        }
+
+        .info-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f0e0cc;
+        }
+
+        /* سبيسات الكمبيوتر */
+        .spec-modern {
+            background: linear-gradient(110deg, #1f2f3a, #14242e);
+            border-radius: 40px;
+            padding: 20px 28px;
+            margin: 25px 0 20px;
+            color: #faf3e0;
+        }
+
+        .spec-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .spec-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: space-between;
+        }
+
+        .spec-chip {
+            background: rgba(255, 245, 215, 0.1);
+            border-radius: 48px;
+            padding: 6px 18px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* التذييل والاتصال */
+        .footer-contact {
+            background: #fff7ef;
+            border-radius: 44px;
+            padding: 20px 25px;
+            margin-top: 30px;
+            text-align: center;
+            border: 1px solid #ffdeae;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #b64912;
+        }
+
+        .phone {
+            font-size: 1.2rem;
+            font-weight: 700;
+            direction: ltr;
+            display: inline-block;
+            background: #e7e1cf;
+            padding: 5px 15px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+        }
+
+        .btn-shamel {
+            background: #ff914d;
+            border: none;
+            font-weight: bold;
+            padding: 10px 28px;
+            border-radius: 48px;
+            color: white;
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 1rem;
+            cursor: default;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to left, #ffb347, transparent);
+        }
+
+        @media (max-width: 750px) {
+            .content {
+                padding: 20px 18px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="ad-card">
+    <div class="hero">
+        <h1>🗂️ كورس تطوير الويب المتكامل</h1>
+        <div class="badge-stack">
+            <span class="tech-badge">🖥️ HTML5 & CSS3</span>
+            <span class="tech-badge">⚡ JavaScript (ES6+)</span>
+            <span class="tech-badge">⚛️ React.js (Modern)</span>
+        </div>
+        <p>🎯 من الصفر حتى الاحتراف · مشاريع حقيقية · مسار عملي شامل</p>
+    </div>
+
+    <div class="content">
+        <!-- المستويات الثلاثة -->
+        <div class="levels-row">
+            <div class="level-card">
+                <div class="level-head"><h3>📘 المستوى I</h3><span>HTML & CSS</span></div>
+                <div class="level-body">
+                    <ul>
+                        <li>هيكلة HTML5، النماذج، الجداول</li>
+                        <li>CSS3: ألوان، خطوط، Flexbox & Grid</li>
+                        <li>تصميم متجاوب (Responsive)</li>
+                        <li>✔ مشروع: موقع ويب كامل</li>
+                    </ul>
+                    <div class="price-tag">💰 750 ج.م</div>
+                    <div class="req-light">✅ 12 محاضرة (ساعتان) – لا يحتاج خبرة</div>
+                </div>
+            </div>
+            <div class="level-card">
+                <div class="level-head"><h3>📙 المستوى II</h3><span>JavaScript</span></div>
+                <div class="level-body">
+                    <ul>
+                        <li>أساسيات البرمجة، DOM، الأحداث</li>
+                        <li>المصفوفات، الكائنات، الدوال</li>
+                        <li>Async/Await، APIs، Local Storage</li>
+                        <li>✔ مشروع: تطبيق ويب تفاعلي</li>
+                    </ul>
+                    <div class="price-tag">💰 950 ج.م</div>
+                    <div class="req-light">📌 يتطلب اجتياز الأول + امتحان تحديد مستوى | 12 محاضرة (2.5 س)</div>
+                </div>
+            </div>
+            <div class="level-card">
+                <div class="level-head"><h3>📕 المستوى III</h3><span>React.js</span></div>
+                <div class="level-body">
+                    <ul>
+                        <li>مكونات، JSX، State & Props</li>
+                        <li>Hooks (useState, useEffect, useContext)</li>
+                        <li>React Router, Context API, جلب البيانات</li>
+                        <li>✔ مشروع نهائي: تطبيق كامل بـ React</li>
+                    </ul>
+                    <div class="price-tag">💰 1100 ج.م</div>
+                    <div class="req-light">⚛️ يتطلب اجتياز الأول والثاني | 12 محاضرة (2.5 س)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مخرجات سريعة -->
+        <div class="outputs">
+            <div class="output-item"><span>🏗️</span> بعد المستوى I: بناء وتصميم أي موقع ثابت متجاوب</div>
+            <div class="output-item"><span>🟨</span> بعد المستوى II: تفاعل كامل، جلب البيانات، تطبيقات ديناميكية</div>
+            <div class="output-item"><span>⚛️</span> بعد React.js: تطبيقات حديثة، جاهزية لسوق العمل</div>
+        </div>
+
+        <!-- جدول مختصر للرسوم والمتطلبات -->
+        <div class="info-table">
+            <table>
+                <thead><tr><th>المستوى</th><th>المحتوى الأساسي</th><th>المتطلب</th><th>الرسوم (ج.م)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>المستوى الأول</td><td>HTML & CSS</td><td>بدون خبرة سابقة</td><td><strong>750 ج.م</strong></td></tr>
+                    <tr><td>المستوى الثاني</td><td>JavaScript (JS)</td><td>اجتياز الأول + امتحان تحديد</td><td><strong>950 ج.م</strong></td></tr>
+                    <tr><td>المستوى الثالث</td><td>React.js</td><td>اجتياز الأول والثاني</td><td><strong>1100 ج.م</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- نظام الدراسة + مواصفات خفيفة -->
+        <div class="spec-modern">
+            <div class="spec-title">🗓️ نظام الدراسة | 💻 المواصفات الموصى بها</div>
+            <div class="spec-flex">
+                <span class="spec-chip">📅 3 أيام في الأسبوع</span>
+                <span class="spec-chip">🖥️ Intel i5 أو Ryzen 5 (8th gen+)</span>
+                <span class="spec-chip">🗄️ 8GB RAM (16GB لـ React أفضَل)</span>
+                <span class="spec-chip">💾 SSD 256GB على الأقل</span>
+                <span class="spec-chip">🌐 إنترنت 10 ميجابت/ثانية</span>
+                <span class="spec-chip">🎧 سماعة رأس بميكروفون</span>
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 14px; opacity: 0.8;">✅ VS Code + React سيعملان بسلاسة · ملاحظة: الأجهزة الأقل قد تواجه بطئاً في مشاريع React.</p>
+        </div>
+
+        <!-- تذييل يتضمن الاسم ورقم الهاتف -->
+        <div class="footer-contact">
+            <div>📞 للاستفسار والتسجيل المباشر :</div>
+            <div class="name">علي محمد علي خليل</div>
+            <div class="phone">📱 01121360605</div>
+            <div class="btn-shamel">🚀 ابدأ رحلتك من الصفر إلى Front-End محترف</div>
+            <p style="font-size: 12px; margin-top: 12px;">🏆 كورس متكامل مشاريع حقيقية تضاف إلى البورتفوليو</p>
+        </div>
+        <hr>
+        <p style="font-size: 10px; text-align: center; color: #7b8a7b;">*الكورس موجه للمبتدئين والمحترفين، المستويات مترابطة. الأسعار بالجنيه المصري.</p>
+    </div>
+</div>
+</body>
+</html>
